@@ -1,19 +1,15 @@
-import styled from "styled-components";
 import GlobalStyle from "./styles/GlobalStyles";
 import Button from "./ui/Button";
+import Heading from "./ui/Heading";
 import Input from "./ui/Input";
-
-const H1 = styled.h1`
-  font-size: 30px;
-  font-weight: 600;
-  background-color: var(--color-brand-600);
-`;
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <H1>hii mohamed</H1>
+      <Heading as="h1">hii mohamed</Heading>
+      <Heading as="h2">hii mohamed</Heading>
+      <Heading as="h3">hii mohamed</Heading>
       <Button>check in</Button>
       <Button>check out</Button>
       <Input placeholder="your name" />
