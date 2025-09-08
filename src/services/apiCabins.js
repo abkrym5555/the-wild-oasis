@@ -7,5 +7,6 @@ export async function getCabins() {
 
     throw new Error("cant get cabins data");
   }
+  //promise
   return data;
 }
