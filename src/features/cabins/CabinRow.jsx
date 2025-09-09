@@ -47,9 +47,9 @@ function CabinRow({ cabin }) {
   const {
     id: cabinId,
     name,
-    imag,
+    image,
     discount,
-    regulerPrice,
+    regularPrice,
     maxCapacity,
   } = cabin;
 
@@ -70,10 +70,10 @@ function CabinRow({ cabin }) {
 
   return (
     <TableRow role="row">
-      <Img src={imag} />
+      <Img src={image} />
       <Cabin>{name}</Cabin>
       <div>Fits up to {maxCapacity} guests</div>
-      <Price>{formatCurrency(regulerPrice)}</Price>
+      <Price>{formatCurrency(regularPrice)}</Price>
       <Discount>{formatCurrency(discount)}</Discount>
       <button disabled={isDeleting} onClick={() => mutate(cabinId)}>
         delete
