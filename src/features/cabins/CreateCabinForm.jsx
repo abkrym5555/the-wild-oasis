@@ -99,7 +99,6 @@ function CreateCabinForm() {
         error={errors?.description?.message}
       >
         <Textarea
-          disabled={isPending}
           type="number"
           id="description"
           defaultValue=""
@@ -110,7 +109,7 @@ function CreateCabinForm() {
       </FormRow>
 
       <FormRow label="Cabin photo">
-        <FileInput disabled={isPending} id="image" accept="image/*" />
+        <FileInput id="image" accept="image/*" />
       </FormRow>
 
       <FormRow>
