@@ -3,6 +3,7 @@ import { formatCurrency } from "../../utils/helpers";
 import { useState } from "react";
 import { useDeleteCabin } from "./useDeleteCabin";
 import CreateCabinForm from "./CreateCabinForm";
+import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
 
 const TableRow = styled.div`
   display: grid;
@@ -70,12 +71,17 @@ function CabinRow({ cabin }) {
           <span>&mdash;</span>
         )}
         <div>
-          <button onClick={() => setShowFrom((show) => !show)}>edit</button>
+          <button>
+            <HiSquare2Stack />
+          </button>
+          <button onClick={() => setShowFrom((show) => !show)}>
+            <HiPencil />
+          </button>
           <button
             disabled={isDeleting}
             onClick={() => mutateDeleteCabins(cabinId)}
           >
-            delete
+            <HiTrash />
           </button>
         </div>
       </TableRow>
