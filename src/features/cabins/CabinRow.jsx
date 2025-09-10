@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDeleteCabin } from "./useDeleteCabin";
 import CreateCabinForm from "./CreateCabinForm";
 import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
+import { useCreatCabin } from "./useCreatCabin";
 
 const TableRow = styled.div`
   display: grid;
@@ -58,6 +59,17 @@ function CabinRow({ cabin }) {
 
   const { isDeleting, mutateDeleteCabins } = useDeleteCabin();
 
+  const { creatMutate, isPending } = useCreatCabin();
+  function handelDuplicate() {
+    creatMutate({
+      name: `copy of ${name}`,
+      discount,
+      regularPrice,
+      image,
+      maxCapacity,
+    });
+  }
+
   return (
     <>
       <TableRow role="row">
@@ -71,7 +83,7 @@ function CabinRow({ cabin }) {
           <span>&mdash;</span>
         )}
         <div>
-          <button>
+          <button disabled={isPending} onClick={handelDuplicate}>
             <HiSquare2Stack />
           </button>
           <button onClick={() => setShowFrom((show) => !show)}>

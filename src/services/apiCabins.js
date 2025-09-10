@@ -15,7 +15,7 @@ export async function creatEditCabins(newCabin, id) {
   //https://szvycgnfsngawjoilcun.supabase.co/storage/v1/object/public/cabin-imags/cabin-001.jpg
 
   //check for image
-  const hasSupbaseUrl = newCabin.imag?.startsWith(supabaseUrl);
+  const hasSupbaseUrl = newCabin.image?.startsWith?.(supabaseUrl);
 
   const imagName = `${Math.random()}-${newCabin.image.name}`.replaceAll(
     "/",
@@ -46,6 +46,9 @@ export async function creatEditCabins(newCabin, id) {
   }
 
   //upload
+
+  if (hasSupbaseUrl) return data;
+
   const { error: uploadImgErr } = await supabase.storage
     .from("cabin-imags")
     .upload(imagName, newCabin.image);

@@ -21,16 +21,27 @@ function CreateCabinForm({ cabinToEdit = {} }) {
     defaultValues: isEditSession ? editValues : {},
   });
 
-  const { creatMutate, isPending } = useCreatCabin(reset);
+  const { creatMutate, isPending } = useCreatCabin();
 
-  const { editMutate, isEditing } = useEditCabin(reset);
+  const { editMutate, isEditing } = useEditCabin();
 
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
     if (isEditSession)
-      editMutate({ newCabinData: { ...data, image }, id: editId });
-    else creatMutate({ ...data, image });
+      editMutate(
+        { newCabinData: { ...data, image }, id: editId },
+        {
+          onSuccess: () => reset(),
+        }
+      );
+    else
+      creatMutate(
+        { ...data, image },
+        {
+          onSuccess: () => reset(),
+        }
+      );
   }
 
   return (
