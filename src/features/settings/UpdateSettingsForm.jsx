@@ -6,6 +6,7 @@ import { useSettings } from "./useSettings";
 
 function UpdateSettingsForm() {
   const { isLoading, data: settings } = useSettings();
+
   if (isLoading) return <Spinner />;
   return (
     <Form>
