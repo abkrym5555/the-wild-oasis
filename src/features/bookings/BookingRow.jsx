@@ -38,11 +38,11 @@ function BookingRow({
   booking: {
     id: bookingId,
     created_at,
-    startData,
-    endData,
+    startDate,
+    endDate,
     numNights,
-    numGustes,
-    totalPricr,
+    numGuests,
+    totalPrice,
     status,
     guests: { fullName: guestName, email },
     cabins: { name: cabinName },
@@ -65,20 +65,20 @@ function BookingRow({
 
       <Stacked>
         <span>
-          {isToday(new Date(startData))
+          {isToday(new Date(startDate))
             ? "Today"
-            : formatDistanceFromNow(startData)}{" "}
+            : formatDistanceFromNow(startDate)}{" "}
           &rarr; {numNights} night stay
         </span>
         <span>
-          {format(new Date(startData), "MMM dd yyyy")} &mdash;{" "}
-          {format(new Date(endData), "MMM dd yyyy")}
+          {format(new Date(startDate), "MMM dd yyyy")} &mdash;{" "}
+          {format(new Date(endDate), "MMM dd yyyy")}
         </span>
       </Stacked>
 
       <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
 
-      <Amount>{formatCurrency(totalPricr)}</Amount>
+      <Amount>{formatCurrency(totalPrice)}</Amount>
     </Table.Row>
   );
 }
