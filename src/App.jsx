@@ -12,6 +12,7 @@ import PageNotFound from "./pages/PageNotFound";
 import GlobalStyle from "./styles/GlobalStyles";
 import AppLayout from "./ui/AppLayout";
 import { Toaster } from "react-hot-toast";
+import Booking from "./pages/Booking";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +35,7 @@ function App() {
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="booking" element={<Bookings />} />
+              <Route path="bookings/:bookingId" element={<Booking />} />
               <Route path="cabins" element={<Cabins />} />
               <Route path="users" element={<NewUsers />} />
               <Route path="settings" element={<Settings />} />
