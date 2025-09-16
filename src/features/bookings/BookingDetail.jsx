@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import BookingDataBox from "./BookingDataBox";
@@ -19,8 +20,8 @@ const HeadingGroup = styled.div`
 `;
 
 function BookingDetail() {
+  const navigate = useNavigate();
   const { bookings, isLoading, error } = useQueryBookings();
-  console.log(bookings);
 
   const moveBack = useMoveBack();
 
@@ -46,6 +47,11 @@ function BookingDetail() {
       <BookingDataBox booking={bookings} />
 
       <ButtonGroup>
+        {bookings.status === "unconfirmed" && (
+          <Button onClick={() => navigate(`/checkin/${bookings.bookingId}`)}>
+            Check in
+          </Button>
+        )}
         <Button variation="secondary" onClick={moveBack}>
           Back
         </Button>
