@@ -14,7 +14,7 @@ export function useChecking() {
         ...breakfast,
       }),
     onSuccess: (data) => {
-      toast.success(`Booking #${data.is} is sucssefuly checked in`);
+      toast.success(`Booking #${data.id} is sucssefuly checked in`);
       queryClient.invalidateQueries({
         queryKey: ["bookings"],
       });
